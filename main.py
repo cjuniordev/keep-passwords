@@ -18,51 +18,54 @@ def managePasswords(passwords, passwordName):
     arquivo.writelines(conteudo)
     arquivo.close()
 
-exit = True
-while(exit):
+def main(passwords):
+    exit = True
+    while(exit):
 
-    print("O que deseja fazer? see / new / exit.")
-    answer = input("Resposta:    ")
+        print("O que deseja fazer? see / new / exit.")
+        answer = input("Resposta:    ")
 
-    if(answer == "new"):
-        # to give name for password
-        passwordName = input("Dê um nome à sua senha:  ")
+        if(answer == "new"):
+            # to give name for password
+            passwordName = input("Dê um nome à sua senha:  ")
 
-        # get password
-        newPassword = input("Insira sua nova senha: ")
+            # get password
+            newPassword = input("Insira sua nova senha: ")
 
-        # keep password
-        passwords[passwordName] = newPassword
-        managePasswords(passwordName, newPassword)
-        # clear shell
-        os.system('cls' if os.name == 'nt' else 'clear')
-
-        print("Senha salva!")
-
-    elif(answer == "see"):
-
-        if(passwords == {}):
+            # keep password
+            passwords[passwordName] = newPassword
+            managePasswords(passwordName, newPassword)
             # clear shell
             os.system('cls' if os.name == 'nt' else 'clear')
 
-            print("\n")
-            print("Você não tem senhas salvas!")
-            print("\n")
+            print("Senha salva!")
+
+        elif(answer == "see"):
+
+            if(passwords == {}):
+                # clear shell
+                os.system('cls' if os.name == 'nt' else 'clear')
+
+                print("\n")
+                print("Você não tem senhas salvas!")
+                print("\n")
+            else:
+                print("\n")
+                # give back password
+                x = passwords.items()
+                for k, v in x:
+                    print(k + ": " + v)
+
+                print("\n" * 2)
+
+        elif(answer == "exit"):
+            # clear shell
+            os.system('cls' if os.name == 'nt' else 'clear')
+
+            # get out
+            exit = False
+
         else:
-            print("\n")
-            # give back password
-            x = passwords.items()
-            for k, v in x:
-                print(k + ": " + v)
+            print("Digite uma resposta válida!")
 
-            print("\n" * 2)
-
-    elif(answer == "exit"):
-        # clear shell
-        os.system('cls' if os.name == 'nt' else 'clear')
-
-        # get out
-        exit = False
-
-    else:
-        print("Digite uma resposta válida!")
+main(passwords)
