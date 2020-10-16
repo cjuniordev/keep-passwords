@@ -4,16 +4,11 @@ passwords = {}
 
 def managePasswords(passwords, passwordName):
 
-    # Abra o arquivo (leitura)
     arquivo = open('passwords.txt', 'r')
     conteudo = arquivo.readlines()
-
-    # insira seu conteúdo
-    # obs: o método append() é proveniente de uma lista
+    
     conteudo.append(str(passwords))
 
-    # Abre novamente o arquivo (escrita)
-    # e escreva o conteúdo criado anteriormente nele.
     arquivo = open('passwords.txt', 'w')
     arquivo.writelines(conteudo)
     arquivo.close()
@@ -22,15 +17,15 @@ def main(passwords):
     exit = True
     while(exit):
 
-        print("O que deseja fazer? see / new / exit.")
+        print("What do you want to do? see / new / exit.")
         answer = input("Resposta:    ")
 
         if(answer == "new"):
             # to give name for password
-            passwordName = input("Dê um nome à sua senha:  ")
+            passwordName = input("Name your password:  ")
 
             # get password
-            newPassword = input("Insira sua nova senha: ")
+            newPassword = input("Enter your new password: ")
 
             # keep password
             passwords[passwordName] = newPassword
@@ -38,7 +33,7 @@ def main(passwords):
             # clear shell
             os.system('cls' if os.name == 'nt' else 'clear')
 
-            print("Senha salva!")
+            print("Password saved!")
 
         elif(answer == "see"):
 
@@ -47,7 +42,7 @@ def main(passwords):
                 os.system('cls' if os.name == 'nt' else 'clear')
 
                 print("\n")
-                print("Você não tem senhas salvas!")
+                print("You don't have passwords saves!")
                 print("\n")
             else:
                 print("\n")
@@ -66,6 +61,6 @@ def main(passwords):
             exit = False
 
         else:
-            print("Digite uma resposta válida!")
+            print("Type a valid answer!")
 
-main(passwords)
+main(passwords) # Run function
